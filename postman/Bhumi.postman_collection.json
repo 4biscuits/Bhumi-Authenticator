@@ -1,0 +1,123 @@
+{
+	"info": {
+		"_postman_id": "1bac4711-19f7-45d7-a1a5-a14d1cd9378e",
+		"name": "Bhumi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ec2-13-233-122-49.ap-south-1.compute.amazonaws.com:1997/signup",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "test@email.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "test-password",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "1234567890",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "pin",
+							"value": "123456",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "ec2-13-233-122-49.ap-south-1.compute.amazonaws.com:1997/signin",
+					"host": [
+						"ec2-13-233-122-49",
+						"ap-south-1",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"port": "1997",
+					"path": [
+						"signin"
+					]
+				},
+				"description": "Signup to bhumi\n"
+			},
+			"response": []
+		},
+		{
+			"name": "ec2-13-233-122-49.ap-south-1.compute.amazonaws.com:1997/signin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "test@email.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "test-password",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "1234567890",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "pin",
+							"value": "123456",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "ec2-13-233-122-49.ap-south-1.compute.amazonaws.com:1997/signin",
+					"host": [
+						"ec2-13-233-122-49",
+						"ap-south-1",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"port": "1997",
+					"path": [
+						"signin"
+					]
+				},
+				"description": "Bhumi Signin"
+			},
+			"response": []
+		}
+	]
+}
