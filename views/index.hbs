@@ -1,0 +1,50 @@
+<div class='container-fluid'>
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-md-offset-12">
+
+            {{#if updated}}
+                <div class="card card-body bg-success">
+                    Password successfully updated, login now!!
+                </div>
+            {{else}}
+
+                <form class="form-signin" action="/reset/" method="POST">
+
+                    <div class="form-label-group">
+
+                        <div class="text-center mb-4">
+                            <h1 class="h3 mb-3 font-weight-normal">Password Reset</h1>
+                            <img src="/images/bhumi_dp.jpg"  class="img img-cus img-responsive" alt="bhumi logo" />
+                            <p>Type your new password below to reset it.</p>
+                        </div>
+
+                        {{#if err}}
+                            <div class="card card-body bg-danger">
+                                {{{msg}}}
+                            </div>
+                        {{/if}}
+
+
+                        <div class="form-label-group">
+                            <input type="password" id="inputPassword1" name="newpassword" class="form-control" placeholder="Password" required>
+                            <label for="inputPassword1">New Password</label>
+                        </div>
+
+
+
+                        <div class="form-label-group">
+                            <input type="password" id="inputPassword2" name="retypepassword" class="form-control" placeholder="Retype Password" required>
+                            <label for="inputPassword2">Retype Password</label>
+                        </div>
+
+                        <input type="hidden" id="token" name="token" value="{{token}}" />
+
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Change Password</button>
+
+
+                </form>
+            {{/if}}
+        </div>
+    </div>
+
+</div>
