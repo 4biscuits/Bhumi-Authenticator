@@ -9,6 +9,8 @@ var UserSchema = new Schema({
     password:{ type:String, required: true},
     mobile: {type: String, required: true},
     pin: {type: String, required: true},
+    name: {type: String, required: true},
+    city: {type: String, required: true},
     resetPasswordToken: {type: String},
     resetPasswordExpires: {type: Date}
 });

@@ -64,7 +64,9 @@ router.post('/signup/',function(req,res,next){
           email: req.body.email,
           password:req.body.password,
           mobile: req.body.phone,
-          pin: req.body.pin
+          pin: req.body.pin,
+          name: req.body.name,
+          city: req.body.city
         });
         newUser.save(function(err,success){
           if(err){
