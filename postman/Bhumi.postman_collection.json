@@ -22,30 +22,38 @@
 					"urlencoded": [
 						{
 							"key": "email",
-							"value": "test@email.com",
+							"value": "admin_test@bhumi.ngo",
 							"type": "text"
 						},
 						{
 							"key": "password",
-							"value": "test-password",
+							"value": "1234567890",
 							"type": "text"
 						},
 						{
 							"key": "phone",
-							"value": "1234567890",
-							"type": "text",
-							"disabled": true
+							"value": "7848948784",
+							"type": "text"
+						},
+						{
+							"key": "city",
+							"value": "Bangalore",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Deepak Chethan",
+							"type": "text"
 						},
 						{
 							"key": "pin",
-							"value": "123456",
-							"type": "text",
-							"disabled": true
+							"value": " 123456",
+							"type": "text"
 						}
 					]
 				},
 				"url": {
-					"raw": "ec2-13-233-122-49.ap-south-1.compute.amazonaws.com:1997/signin",
+					"raw": "ec2-13-233-122-49.ap-south-1.compute.amazonaws.com:1997/signup",
 					"host": [
 						"ec2-13-233-122-49",
 						"ap-south-1",
@@ -55,7 +63,7 @@
 					],
 					"port": "1997",
 					"path": [
-						"signin"
+						"signup"
 					]
 				},
 				"description": "Signup to bhumi\n"
@@ -79,12 +87,12 @@
 					"urlencoded": [
 						{
 							"key": "email",
-							"value": "test@email.com",
+							"value": "admin_test@bhumi.ngo",
 							"type": "text"
 						},
 						{
 							"key": "password",
-							"value": "test-password",
+							"value": "1234567890",
 							"type": "text"
 						},
 						{
