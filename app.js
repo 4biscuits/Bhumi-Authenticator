@@ -6,6 +6,7 @@ var config = require('./config/database');
 var indexRouter = require('./routes/index');
 var mongoose = require('mongoose');
 var app = express();
+require('dotenv').config();
 
 
 // view engine setup
