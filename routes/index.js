@@ -116,7 +116,6 @@ router.get('/forgotPassword/:email', function (req, res, next) {
           pass: process.env.SENDGRID_PASSWORD
         }
       });
-
       // Create the mail contents
       var mailOptions = {
         to: req.params.email,
@@ -132,11 +131,13 @@ router.get('/forgotPassword/:email', function (req, res, next) {
       smtpTransport.sendMail(mailOptions, function(err) {
         // Done sending the mail
         if (err) {
-          res.json({'success':false, 'msg': 'Server hangup, please try again after sometime'});
+          res.json({'success':false, 'msg': 'Server hangup, please try again after sometime', 'err': err});
+        } else  {
+          res.json({'success': true, 'msg': 'Follow the instructions provided in the mail to reset the password'});
         }
-        res.json({'success': true, 'msg': 'Follow the instructions provided in the mail to reset the password'});
       });
     }
+    
   ], function(err) {
     if (err) return next(err);
   });
