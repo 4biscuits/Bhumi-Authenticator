@@ -95,6 +95,7 @@ router.get('/forgotPassword/:email', function (req, res, next) {
       User.findOne({ email: req.params.email }, function(err, user) {
         if (!user) {
           res.json({'success': false, 'msg':'This user is not registered'});
+          return;
         }
         user.resetPasswordToken = token;
         user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
