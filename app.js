@@ -6,20 +6,24 @@ var config = require('./config/database');
 var indexRouter = require('./routes/index');
 var mongoose = require('mongoose');
 var app = express();
+var morgan = require('morgan');
 require('dotenv').config();
 
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
-
+app.use(morgan('combined'));
 
 app.use(passport.initialize());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-mongoose.connect(config.database);
+mongoose.connect(config.database, { 
+  useUnifiedTopology: true,
+  useNewUrlParser: true
+});
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
