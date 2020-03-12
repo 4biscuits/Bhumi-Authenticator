@@ -14,7 +14,7 @@ var crypto = require('crypto');
 var nodemailer = require('nodemailer');
 var sgTransport = require('nodemailer-sendgrid-transport');
 var config = require('../config/database');
-
+const sgMail = require('@sendgrid/mail');
 /*
 * Just a dummy endpoint to test if the server is up
 */
@@ -109,13 +109,7 @@ router.get('/forgotPassword/:email', function (req, res, next) {
       });
     },
     function(token, user, done) {
-      var smtpTransport = nodemailer.createTransport({
-        service: 'SendGrid',
-        auth: {
-          user: process.env.SENDGRID_USER,
-          pass: process.env.SENDGRID_PASSWORD
-        }
-      });
+      sgMail.setApiKey(process.env.SENDGRID_SECRET);
       // Create the mail contents
       var mailOptions = {
         to: req.params.email,
@@ -126,15 +120,12 @@ router.get('/forgotPassword/:email', function (req, res, next) {
             'http://' + req.headers.host + '/reset/' + token + '\n\n' +
             'If you did not request this, please ignore this email and your password will remain unchanged.\n\n' + 'Thank You'
       };
-
-      // Send the generated mail
-      smtpTransport.sendMail(mailOptions, function(err) {
-        // Done sending the mail
+      sgMail.send(mailOptions, (err, result) => {
         if (err) {
           res.json({'success':false, 'msg': 'Server hangup, please try again after sometime', 'err': err});
         } else  {
           res.json({'success': true, 'msg': 'Follow the instructions provided in the mail to reset the password'});
-        }
+        }      
       });
     }
     
