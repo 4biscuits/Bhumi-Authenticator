@@ -8,13 +8,11 @@ const bcrypt = require('bcrypt-nodejs');
 var passport = require('passport');
 require('../config/passport')(passport);
 var jwt = require('jsonwebtoken');
-var mongoose = require('mongoose');
 var async = require('async');
 var crypto = require('crypto');
-var nodemailer = require('nodemailer');
-var sgTransport = require('nodemailer-sendgrid-transport');
 var config = require('../config/database');
 const sgMail = require('@sendgrid/mail');
+const AppConstants = require('../models/AppConstants');
 /*
 * Just a dummy endpoint to test if the server is up
 */
@@ -58,15 +56,18 @@ router.post('/signup/',function(req,res,next){
         res.json({success:false, msg:"Server Hangup!"});
       }
       else if (usr != null){
-        res.json({success:false, msg:"User already exists, try logging in!"});
+        res.json({success : false, msg : "User already exists, try logging in!"});
       }else{
+        let userType = req.body.userType ? req.body.userType : AppConstants.VOLUNTEER;
         var newUser = new User({
           email: req.body.email,
           password:req.body.password,
           mobile: req.body.phone,
           pin: req.body.pin,
           name: req.body.name,
-          city: req.body.city
+          city: req.body.city,
+          userType: userType,
+          appName: req.body.appName,
         });
         newUser.save(function(err,success){
           if(err){

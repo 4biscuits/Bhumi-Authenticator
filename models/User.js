@@ -1,6 +1,7 @@
 /*
  * User Schema model with its helper methods
 */
+const AppConstants = require("./AppConstants");
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt-nodejs');
 var Schema = mongoose.Schema;
@@ -11,6 +12,8 @@ var UserSchema = new Schema({
     pin: {type: String, required: true},
     name: {type: String, required: false},
     city: {type: String, required: false},
+    userType: {type: String, default: AppConstants.VOLUNTEER},
+    appName: {type: String, appName: true},
     resetPasswordToken: {type: String},
     resetPasswordExpires: {type: Date}
 });
